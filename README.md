@@ -1,4 +1,4 @@
-# softwareDataFrontend
+# Inspección de calidad (Frontend Vite + React)
 
 
 Este proyecto es una aplicación frontend desarrollada con React y Vite.
