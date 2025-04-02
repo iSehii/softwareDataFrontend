@@ -6,7 +6,7 @@ function Navbar({ menuOpen, setMenuOpen }) {
   const { user } = useContext(AuthContext)
   return (
     <nav className="flex justify-between items-center pb-6 border-b border-gray-700 relative">
-      <div className="text-2xl font-bold text-emerald-400">Software Data - <span className='text-white font-thin'>{user.nombre}</span></div>
+      <div className="text-2xl font-bold text-emerald-400">Software Data - <span className='text-gray-50 font-thin'>{user.nombre}</span></div>
       <div className="flex space-x-6 items-center">
         <input className="px-4 py-2 bg-gray-800 rounded" placeholder="🔎Search..." />
         <button className="p-2 bg-gray-800 rounded">🔔</button>
