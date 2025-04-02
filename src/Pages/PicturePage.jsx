@@ -1,6 +1,8 @@
 import Camera from '../components/camera'
+import Layout from '../components/layout/layout.jsx';
 function PicturePage(){
     return(
+      <Layout>
         <div>
             <div className="row">
                 <div className="col">
@@ -12,6 +14,7 @@ function PicturePage(){
                 </div>
             </div>
         </div>
+      </Layout>
     )
 }
 export default PicturePage;
