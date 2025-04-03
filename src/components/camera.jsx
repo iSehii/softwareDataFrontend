@@ -1,6 +1,6 @@
 // Importaciones
 import { useRef, useEffect, useState } from "react";
-import { X } from "lucide-react";
+import { X, RefreshCcw } from "lucide-react";
 // Declaracion de constante
 const Camera = () => {
   const vid = useRef(null);
@@ -9,6 +9,7 @@ const Camera = () => {
   const [isCameraOn, setIsCameraOn] = useState(false);
   const [photo, setPhoto] = useState(null);
   const [uploading, setUploading] = useState(false);
+  const [facingMode, setFacingMode] = useState("user");
 
   useEffect(() => {
     return () => {
@@ -18,7 +19,9 @@ const Camera = () => {
 // Inicador de la camara
   const startCamera = async () => {
     try {
-      const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+      const stream = await navigator.mediaDevices.getUserMedia({
+        video: { facingMode }
+      });
       if (vid.current) {
         vid.current.srcObject = stream;
         setIsCameraOn(true);
@@ -36,6 +39,12 @@ const Camera = () => {
       vid.current.srcObject = null;
       setIsCameraOn(false);
     }
+  };
+// Funcion para cambiar la camara
+  const switchCamera = () => {
+    setFacingMode(prevMode => (prevMode === "user" ? "environment" : "user"));
+    stopCamera();
+    startCamera();
   };
 // Funcion para tomar la foto
   const takePhoto = () => {
@@ -92,7 +101,6 @@ const Camera = () => {
     <div className="flex flex-col items-center gap-4 p-4">
       <div className="relative w-full max-w-md">
         <video ref={vid} autoPlay playsInline className="w-full border rounded-lg shadow-lg" />
-        {/* Botón de cerrar cámara con un tache ❌ */}
         {isCameraOn && (
           <button 
             onClick={stopCamera} 
@@ -121,6 +129,14 @@ const Camera = () => {
         >
           Tomar Foto
         </button>
+        {isCameraOn && (
+          <button 
+            onClick={switchCamera} 
+            className="px-4 py-2 bg-[#4682B4] text-white rounded-lg"
+          >
+            <RefreshCcw size={24} />
+          </button>
+        )}
       </div>
 
       <div className="flex gap-2">
