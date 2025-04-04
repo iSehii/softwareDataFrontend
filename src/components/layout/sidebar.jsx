@@ -23,11 +23,11 @@ function Sidebar() {
           </Link>
         </li>
         <li>
-          <Link to="/Result" className="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors">
+          <Link to="/usuarios" className="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors">
             <svg className="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 4v16M17 4v16M3 8h18M3 16h18" />
             </svg>
-            <span>Archivos</span>
+            <span>Usuarios</span>
           </Link>
         </li>
         <li>
