@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { Plus, Edit, Trash2, Search } from "lucide-react"
 import Layout from "../layout/layout";
@@ -9,17 +9,20 @@ function CrudList({ title, items, columns, loading, error, basePath, onDelete, s
   const [searchTerm, setSearchTerm] = useState("")
   const [filteredItems, setFilteredItems] = useState(items)
 
-  // Filtrar elementos cuando cambia el término de búsqueda o los elementos
-  useState(() => {
+
+  useEffect(() => {
     if (searchTerm && searchFields.length > 0) {
       const filtered = items.filter((item) =>
-        searchFields.some((field) => item[field]?.toString().toLowerCase().includes(searchTerm.toLowerCase())),
+        searchFields.some((field) =>
+          item[field]?.toString().toLowerCase().includes(searchTerm.toLowerCase())
+        )
       )
       setFilteredItems(filtered)
     } else {
       setFilteredItems(items)
     }
   }, [searchTerm, items, searchFields])
+  
 
   if (loading) {
     return (

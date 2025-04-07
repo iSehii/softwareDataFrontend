@@ -1,10 +1,8 @@
-import Camera from '../components/camera'
-import Layout from '../components/layout/layout.jsx';
-function PicturePage(){
+import React from 'react';
+import UsuariosList from '../components/usuariosList.jsx';
+function UsuariosPage(){
     return(
-      <Layout>
-        
-      </Layout>
+      <UsuariosList/>
     )
 }
-export default PicturePage;
+export default UsuariosPage;

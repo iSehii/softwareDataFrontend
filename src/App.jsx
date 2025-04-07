@@ -7,8 +7,8 @@ import ResultPage from './Pages/ResultPage';
 import AltaPage from './Pages/AltaPage';
 import ReportPage from './Pages/ReportPage';
 import ProtectedRoute from './ProtectedRoute';
-import UsuariosList from './components/UsuariosList';
 import UsuarioForm from './components/UsuarioForm';
+import UsuariosPage from './Pages/UsuariosPage';
 
 function App() {
   return (     
@@ -25,7 +25,7 @@ function App() {
             <Route path='/Reportes' element={<ReportPage />} />
             <Route path='/Picture' element={<PicturePage />} />
             <Route path='/Result' element={<ResultPage />} />
-            <Route path="/usuarios" element={<UsuariosList />} />
+            <Route path="/usuarios" element={<UsuariosPage />} />
             <Route path="/usuarios/nuevo" element={<UsuarioForm />} />
             <Route path="/usuarios/editar/:id" element={<UsuarioForm />} />
           </Route>

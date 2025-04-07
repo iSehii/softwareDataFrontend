@@ -8,7 +8,6 @@ import Layout from "../layout/layout";
 function CrudForm({ title, initialData, fields, onSubmit, loading, error, basePath, isEditing }) {
   const [formData, setFormData] = useState(initialData)
   const navigate = useNavigate()
-
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target
     setFormData((prev) => ({

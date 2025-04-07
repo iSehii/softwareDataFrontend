@@ -16,6 +16,19 @@ instance.interceptors.request.use(
     (error) => Promise.reject(error)
   );
 
+  instance.interceptors.response.use(
+    (response) => response, 
+    (error) => {
+      if (error.response && error.response.status === 401) {
+        Cookies.remove('token');
+        Cookies.remove('user');
+      
+        window.location.href = '/Login';
+      }
+      return Promise.reject(error); 
+    }
+  );
+
   export const usuariosService = {
     getAll: () => instance.get("/usuarios"),
     getById: (id) => instance.get(`/usuarios/${id}`),
