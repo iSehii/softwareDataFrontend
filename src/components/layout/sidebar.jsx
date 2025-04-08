@@ -59,6 +59,12 @@ import { ChartBar, FileText, Camera, UserPlus, Settings, X } from 'lucide-react'
               </ListItemPrefix>
               Carrocerías
             </Link>
+            <Link className='flex w-full p-[0] h-10 content-center items-center' to={"/Picture"}>
+              <ListItemPrefix className='text-left flex flex-start justify-start'>
+                <Cog6ToothIcon className="h-5 w-5" />
+              </ListItemPrefix>
+              Imagen
+            </Link>
             <Link onClick={logout}  className='flex w-full p-[0] h-10 content-center items-center'>
               <ListItemPrefix className='text-left flex flex-start justify-start'>
                 <PowerIcon className="h-5 w-5" />
