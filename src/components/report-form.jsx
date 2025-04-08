@@ -56,7 +56,7 @@ export default function ReportForm({ onSubmit }) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form onSubmit={handleSubmit} className="space-y-6 p-6 overflow-auto">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="space-y-4">
           <div>
@@ -68,7 +68,7 @@ export default function ReportForm({ onSubmit }) {
               name="priority"
               value={formData.priority}
               onChange={handleChange}
-              className="w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full rounded-md border border-gray-300 bg-gray-800 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               <option value="baja">Baja</option>
               <option value="media">Media</option>
@@ -87,7 +87,7 @@ export default function ReportForm({ onSubmit }) {
               onChange={handleChange}
               placeholder="Descripción detallada del reporte"
               required
-              className="w-full min-h-[100px] rounded-md border border-gray-300 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full min-h-[100px] rounded-md border border-gray-300 bg-gray-800 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
 
@@ -102,7 +102,7 @@ export default function ReportForm({ onSubmit }) {
               onChange={handleChange}
               placeholder="Color"
               required
-              className="w-full h-10 rounded-md border border-gray-300 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full h-10 rounded-md border border-gray-300 bg-gray-800 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
         </div>
@@ -119,7 +119,7 @@ export default function ReportForm({ onSubmit }) {
               onChange={handleChange}
               placeholder="Panel"
               required
-              className="w-full h-10 rounded-md border border-gray-300 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full h-10 rounded-md border border-gray-300 bg-gray-800 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
 
@@ -134,7 +134,7 @@ export default function ReportForm({ onSubmit }) {
               onChange={handleChange}
               placeholder="Número de lote"
               required
-              className="w-full h-10 rounded-md border border-gray-300 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full h-10 rounded-md border border-gray-300 bg-gray-800 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
 
@@ -147,7 +147,7 @@ export default function ReportForm({ onSubmit }) {
               name="estado"
               value={formData.estado}
               onChange={handleChange}
-              className="w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full rounded-md border border-gray-300 bg-gray-800 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               <option value="pendiente">Pendiente</option>
               <option value="en proceso">En proceso</option>
