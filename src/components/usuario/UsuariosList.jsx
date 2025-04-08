@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react"
-import { usuariosService, rolesService } from "../api/api"
-import CrudList from "./common/CrudList"
+import { usuariosService, rolesService } from "../../api/api"
+import CrudList from "../common/CrudList"
 
 function UsuariosList() {
   const [usuarios, setUsuarios] = useState([]) 

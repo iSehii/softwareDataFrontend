@@ -7,8 +7,10 @@ import ResultPage from './Pages/ResultPage';
 import AltaPage from './Pages/AltaPage';
 import ReportPage from './Pages/ReportPage';
 import ProtectedRoute from './ProtectedRoute';
-import UsuarioForm from './components/UsuarioForm';
+import UsuarioForm from './components/usuario/UsuarioForm';
+import CarroceriasForm from './components/carroceria/CarroceriaForm';
 import UsuariosPage from './Pages/UsuariosPage';
+import CarroceriasPage from './Pages/CarroceriasPage';
 
 function App() {
   return (     
@@ -26,8 +28,11 @@ function App() {
             <Route path='/Picture' element={<PicturePage />} />
             <Route path='/Result' element={<ResultPage />} />
             <Route path="/usuarios" element={<UsuariosPage />} />
+            <Route path="/carrocerias" element={<CarroceriasPage />} />
             <Route path="/usuarios/nuevo" element={<UsuarioForm />} />
             <Route path="/usuarios/editar/:id" element={<UsuarioForm />} />
+            <Route path="/carrocerias/nuevo" element={<CarroceriasForm />} />
+            <Route path="/carrocerias/editar/:id" element={<CarroceriasForm />} />
           </Route>
         </Routes>
       </BrowserRouter>

@@ -62,7 +62,7 @@ function LoginPage() {
     <button 
       type="submit" 
       disabled={isLoading}
-      className={`w-full mt-5 p-3 bg-slate-600 text-white rounded-md hover:bg-blue-900 transition ${isLoading ? 'opacity-90 cursor-not-allowed' : ''}`}
+      className={`w-full mt-5 p-3 bg-slate-600 text-white rounded-md hover:bg-blue-900 transition ${isLoading ? 'p-[0.22em] opacity-90 cursor-not-allowed' : ''}`}
     >
       {isLoading ? (
         <ColorRing

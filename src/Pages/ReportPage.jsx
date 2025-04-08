@@ -1,13 +1,12 @@
 import Layout from '../components/layout/layout.jsx';
 import ReportInterface from "../components/report-interface.jsx"
+import { Link } from "react-router-dom";
+import { Plus } from "lucide-react";
 
 function ReportPage(){
   return (
     <Layout>
-        <main className="container mx-auto px-4">
-        <h1 className="text-3xl font-bold mb-6">Sistema de Reportes</h1>
-        <ReportInterface />
-        </main>
+        <ReportInterface />      
     </Layout>
   )
 }

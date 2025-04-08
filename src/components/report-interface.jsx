@@ -1,6 +1,9 @@
 "use client"
 
 import { useState } from "react"
+import { Save, ArrowLeft } from "lucide-react"
+import { Plus } from "lucide-react";
+import { Link } from "react-router-dom"
 import ReportForm from "./report-form"
 import ReportList from "./report-list"
 
@@ -49,29 +52,27 @@ export default function ReportInterface() {
   }
 
   return (
-    <div className="bg-black rounded-lg border border-gray-200 shadow-sm">
-      <div className="p-6">
-        <div className="w-full">
-          <div className="flex mb-6 bg-gray-700 rounded-md p-1">
-            <button
-              className={`flex-1 px-3 py-1.5 text-sm font-medium rounded-sm ${
-                activeTab === "lista" ? "bg-gray-600 shadow-sm" : "text-gray-500"
-              }`}
-              onClick={() => setActiveTab("lista")}
-            >
-              Lista de Reportes
+    <div >
+        <div className="flex justify-between items-center mb-6">
+          <h1 className="text-2xl font-bold text-gray-50">Reportes</h1>
+          {activeTab === "lista" ? (
+            <div onClick={() => setActiveTab("form")} className="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-md flex items-center">
+              <Plus className="h-5 w-5 mr-2" />
+              Nuevo reporte
+            </div>
+          ) : (
+            <button onClick={() => setActiveTab("lista")} className="flex items-center text-gray-50 hover:text-red-500 cursor-pointer">
+              <ArrowLeft className="h-5 w-5 mr-1 mt-1 text-white hover:text-red-500 cursor-pointer" />
+              Volver
             </button>
-            <button
-              className={`flex-1 px-3 py-1.5 text-sm font-medium rounded-sm ${
-                activeTab === "nuevo" ? "bg-gray-600 shadow-sm" : "text-gray-500"
-              }`}
-              onClick={() => setActiveTab("nuevo")}
-            >
-              Nuevo Reporte
-            </button>
-          </div>
+          )}
+        </div>
 
+      <div className="p-[0]">
+        <div className="w-full">
+              <div className="bg-black rounded-lg border border-gray-200 shadow-sm">
           {activeTab === "lista" ? <ReportList reports={reports} /> : <ReportForm onSubmit={addReport} />}
+              </div>
         </div>
       </div>
     </div>

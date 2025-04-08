@@ -57,7 +57,7 @@ function CrudList({ title, items, columns, loading, error, basePath, onDelete, s
         <div className="bg-black rounded-lg border border-gray-200 shadow-sm overflow-hidden">
           {searchFields.length > 0 && (
             <div className="p-4 border-b">
-              <div className="relative w-full sm:w-64">
+              <div className="relative bg-gray-700 w-full sm:w-64">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                   <Search className="h-5 w-5 text-gray-50" />
                 </div>

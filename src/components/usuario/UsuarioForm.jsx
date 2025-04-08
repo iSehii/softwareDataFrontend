@@ -1,9 +1,7 @@
-"use client"
-
 import { useState, useEffect } from "react"
 import { useParams, useNavigate } from "react-router-dom"
-import { usuariosService, rolesService } from "../api/api"
-import CrudForm from "./common/CrudForm"
+import { usuariosService, rolesService } from "../../api/api"
+import CrudForm from "../common/CrudForm"
 
 function UsuarioForm() {
   const { id } = useParams()
@@ -14,6 +12,7 @@ function UsuarioForm() {
     nombre: "",
     email: "",
     password: "",
+    username: "",
     id_rol: "",
     activo: true,
   })
@@ -31,10 +30,10 @@ function UsuarioForm() {
         if (isEditing) {
           const usuarioRes = await usuariosService.getById(id)
           const usuario = usuarioRes.data
-
           setFormData({
             nombre: usuario.nombre || "",
-            email: usuario.email || "",
+            correo: usuario.correo || "",
+            username: usuario.username || "",
             password: "", 
             id_rol: usuario.id_rol || "",
             activo: usuario.activo !== undefined ? usuario.activo : true,
@@ -84,14 +83,21 @@ function UsuarioForm() {
       placeholder: "Ingrese el nombre completo",
     },
     {
-      name: "email",
-      label: "Email",
+      name: "correo",
+      label: "Correo",
       type: "email",
       required: true,
       placeholder: "Ingrese el correo electrónico",
     },
     {
-      name: "password",
+      name: "username",
+      label: "Nombre de usuario",
+      type: "text",
+      required: true,
+      placeholder: "Ingrese el username",
+    },
+    {
+      name: "clave",
       label: "Contraseña",
       type: "password",
       required: !isEditing,

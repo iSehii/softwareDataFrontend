@@ -80,8 +80,8 @@ export default function ReportList({ reports }) {
   }
 
   return (
-    <div className="space-y-4">
-      <div className="flex flex-col sm:flex-row gap-4">
+    <div >
+      <div className="flex flex-col sm:flex-row gap-4 p-4">
         <div className="relative flex-1">
           <div className="absolute left-2.5 top-2.5 h-4 w-4 text-gray-400">
             <Search />
@@ -118,7 +118,7 @@ export default function ReportList({ reports }) {
         </div>
       </div>
 
-      <div className="rounded-md border border-gray-00 overflow-hidden">
+      <div className="overflow-hidden">
         <div className="w-full overflow-auto">
           <table className="w-full caption-bottom text-sm">
             <thead className="border-b border-gray-200 bg-gray-700">
