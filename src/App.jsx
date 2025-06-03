@@ -11,12 +11,14 @@ import UsuarioForm from './components/usuario/UsuarioForm';
 import CarroceriasForm from './components/carroceria/CarroceriaForm';
 import UsuariosPage from './Pages/UsuariosPage';
 import CarroceriasPage from './Pages/CarroceriasPage';
+import DiccionarioPage from './Pages/DiccionarioPage';
 
 function App() {
   return (     
     <AuthProvider>
       <BrowserRouter>
         <Routes>
+          <Route path='/diccionario' element={<DiccionarioPage />} />
           <Route path='/Login' element={<LoginPage />} />
 
           {/* RUTAS PROTEGIDAS */}

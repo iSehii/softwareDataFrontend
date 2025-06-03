@@ -31,7 +31,7 @@ export default function ReportList({ reports }) {
         )
       case "media":
         return (
-          <span className="inline-flex items-center rounded-full border border-transparent bg-blue-100 px-2.5 py-0.5 text-xs font-semibold text-blue-800">
+          <span className="inline-flex items-center rounded-full border border-transparent bg-blue-950 px-2.5 py-0.5 text-xs font-semibold text-blue-800">
             Media
           </span>
         )
@@ -60,7 +60,7 @@ export default function ReportList({ reports }) {
         )
       case "en proceso":
         return (
-          <span className="inline-flex items-center rounded-full border border-transparent bg-blue-100 px-2.5 py-0.5 text-xs font-semibold text-blue-800">
+          <span className="inline-flex items-center rounded-full border border-transparent bg-blue-950 px-2.5 py-0.5 text-xs font-semibold text-blue-800">
             En proceso
           </span>
         )
