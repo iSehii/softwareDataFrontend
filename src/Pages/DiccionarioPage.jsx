@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import imagenLogo from '../assets/Imagen.png'; // ajusta la ruta según tu estructura
+import imagenLogo from '../assets/Imagen.png'; 
 
 
 export default function DiccionarioPage() {
