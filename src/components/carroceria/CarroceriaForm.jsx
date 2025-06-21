@@ -94,13 +94,6 @@ const { user } = useContext(AuthContext)
       placeholder: "Ingrese el color",
     },
     {
-      name: "descripcion",
-      label: "Descripción",
-      type: "textarea",
-      required: true,
-      placeholder: "Ingrese la descripción",
-    },
-    {
       name: "panel",
       label: "Panel",
       type: "text",
@@ -115,10 +108,17 @@ const { user } = useContext(AuthContext)
       placeholder: "Ingrese el lote",
     },
     {
+      name: "descripcion",
+      label: "Descripción",
+      type: "textarea",
+      required: true,
+      placeholder: "Ingrese la descripción",
+    },
+    {
       name: "estado",
       label: "Estado",
       type: "checkbox",
-      checkboxLabel: "Carroceria activa",
+      checkboxLabel: "Activo",
     },
     {
       name: "id_usuario",

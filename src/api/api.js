@@ -2,7 +2,7 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 
 const instance = axios.create({
-  baseURL: 'https://inspeccion-de-calidad-api.onrender.com/',
+  baseURL: 'http://localhost:3009/',
 });
 
 instance.interceptors.request.use(

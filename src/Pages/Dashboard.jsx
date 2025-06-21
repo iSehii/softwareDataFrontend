@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Layout from '../components/layout/layout.jsx';
-import { reportesService, usuariosService, carroceriasService, imperfeccionesService } from "../api/api";
-import { FileText, Users, Car, AlertCircle, Plus } from "lucide-react";
+import { reportesService, usuariosService, carroceriasService, severidadesService, imperfeccionesService, rolesService } from "../api/api";
+import { FileText, Users, Car, AlertCircle, Plus, DnaIcon, ZapIcon } from "lucide-react";
 
 function Dashboard() {
   const [stats, setStats] = useState({
@@ -10,6 +10,8 @@ function Dashboard() {
     usuarios: 0,
     carrocerias: 0,
     imperfecciones: 0,
+    severidades: 0,
+    roles: 0,
   });
   const [recentReportes, setRecentReportes] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -17,11 +19,13 @@ function Dashboard() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [reportesRes, usuariosRes, carroceriasRes, imperfeccionesRes] = await Promise.all([
+        const [reportesRes, usuariosRes, carroceriasRes, imperfeccionesRes, rolesRes, severidadesRes] = await Promise.all([
           reportesService.getAll(),
           usuariosService.getAll(),
           carroceriasService.getAll(),
           imperfeccionesService.getAll(),
+          rolesService.getAll(),
+          severidadesService.getAll(),
         ]);
 
         setStats({
@@ -29,6 +33,8 @@ function Dashboard() {
           usuarios: usuariosRes.data.length,
           carrocerias: carroceriasRes.data.length,
           imperfecciones: imperfeccionesRes.data.length,
+          roles: rolesRes.data.length,
+          severidades: severidadesRes.data.length
         });
 
         const sortedReportes = [...reportesRes.data]
@@ -79,6 +85,13 @@ function Dashboard() {
           linkTo="/reportes"
         />
         <StatCard
+          title="Severidades"
+          value={stats.severidades}
+          icon={<ZapIcon className="h-6 w-6" />}
+          color="bg-blue-500"
+          linkTo="/severidades"
+        />
+        <StatCard
           title="Usuarios"
           value={stats.usuarios}
           icon={<Users className="h-6 w-6" />}
@@ -98,6 +111,13 @@ function Dashboard() {
           icon={<AlertCircle className="h-6 w-6" />}
           color="bg-red-500"
           linkTo="/imperfecciones"
+        />
+        <StatCard
+          title="Roles"
+          value={stats.roles}
+          icon={<Plus className="h-6 w-6" />}
+          color="bg-purple-500"
+          linkTo="/roles"
         />
       </div>
 
