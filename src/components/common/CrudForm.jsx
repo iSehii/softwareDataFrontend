@@ -92,6 +92,7 @@ function CrudForm({ title, initialData, fields, onSubmit, loading, error, basePa
                         type="checkbox"
                         name={field.name}
                         checked={formData[field.name] || false}
+                        value={(formData[field.name]) ? true : false}
                         onChange={handleChange}
                         disabled={field.disabled}
                         className="h-4 w-4 text-emerald-600 bg-gray-900 focus:ring-emerald-500 border-gray-300 rounded"
