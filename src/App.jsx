@@ -12,6 +12,7 @@ import CarroceriasForm from './components/carroceria/CarroceriaForm';
 import UsuariosPage from './Pages/UsuariosPage';
 import CarroceriasPage from './Pages/CarroceriasPage';
 import DiccionarioPage from './Pages/DiccionarioPage';
+import LandingPage from './Pages/LandingPage';
 
 function App() {
   return (     
@@ -20,6 +21,7 @@ function App() {
         <Routes>
           <Route path='/diccionario' element={<DiccionarioPage />} />
           <Route path='/Login' element={<LoginPage />} />
+          <Route path='/Landing' element={<LandingPage />} />
 
           {/* RUTAS PROTEGIDAS */}
           <Route element={<ProtectedRoute />}>
