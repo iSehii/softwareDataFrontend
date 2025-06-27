@@ -56,7 +56,6 @@ function LoginPage() {
       className="p-12 bg-opacity-30 rounded-4xl max-w-lg w-full backdrop-blur-xl shadow-cyan-50"
       style={{ backgroundColor: "rgba(255, 255, 255, 0.04)" }}
     >
-
       <div className="flex justify-center">
         <img src={imagenLogo} alt="Logo" className="w-70 h-70 " />
       </div>
