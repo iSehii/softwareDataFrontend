@@ -6,7 +6,7 @@ import RolesPage from './Pages/RolesPage';
 import AltaPage from './Pages/AltaPage';
 import SeveridadesPage from './Pages/SeveridadesPage';
 import ReportesPage from './Pages/ReportesPage';
-import SeveridadForm from './components/severidad/SeveridadForm';
+import SeveridadForm from './components/severidad/SeveridadesForm';
 import ReporteForm from './components/reporte/reporteForm';
 import PrioridadesPage from './Pages/PrioridadesPage';
 import PrioridadForm from './components/prioridad/PrioridadForm';
