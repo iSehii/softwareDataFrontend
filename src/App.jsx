@@ -32,12 +32,11 @@ function App() {
         <Routes>
           <Route path='/diccionario' element={<DiccionarioPage />} />
           <Route path='/Login' element={<LoginPage />} />
-          <Route path='/Landing' element={<LandingPage />} />
+          <Route path='/' element={<LandingPage />} />
 
           {/* RUTAS PROTEGIDAS */}
           <Route element={<ProtectedRoute />}>
             <Route path='/Alta' element={<AltaPage />} />
-            <Route path='/' element={<Dashboard />} />
             <Route path='/Dashboard' element={<Dashboard />} />
             <Route path="/roles" element={<RolesPage />} />
             <Route path="/roles/nuevo" element={<RolForm />} />
