@@ -13,10 +13,11 @@ function UsuariosList() {
 
 useEffect(() => {
   const fetchData = async () => {
+
     try {
       const [usuariosRes, rolesRes] = await Promise.all([
         usuariosService.getAll(),
-        rolesService.getAll(),
+        rolesService.getAll()
       ]);
 
       setUsuarios(usuariosRes.data);

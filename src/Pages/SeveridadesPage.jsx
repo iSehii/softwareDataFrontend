@@ -1,5 +1,5 @@
 import React from 'react';
-import SeveridadesList from '../components/severidad/severidadesList.jsx';
+import SeveridadesList from '../components/severidad/SeveridadesList.jsx';
 function SeveridadesPage(){
     return(
       <SeveridadesList/>

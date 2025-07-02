@@ -1,32 +1,32 @@
-import { useState, useEffect } from "react"
+import { useContext, useState, useEffect } from "react"
 import { useParams, useNavigate } from "react-router-dom"
-import { usuariosService, prioridadesService } from "../../api/api"
+import { prioridadesService } from "../../api/api"
 import CrudForm from "../common/CrudForm"
+import { AuthContext } from '../../context/AuthContext';
 
 function PrioridadForm() {
+  const { user } = useContext(AuthContext)
   const { id } = useParams()
   const navigate = useNavigate()
   const isEditing = !!id
 
   const [formData, setFormData] = useState({
     nombre: "",
+    id_usuario: user.id
   })
 
-  const [prioridades, setPrioridades] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const prioridadesRes = await prioridadesService.getAll()
-        setPrioridades(prioridadesRes.data)
-
         if (isEditing) {
           const prioridadRes = await prioridadesService.getById(id)
           const prioridad = prioridadRes.data
           setFormData({
-            nombre: prioridad.nombre || ""
+            nombre: prioridad.nombre || "",
+            id_usuario: prioridad.id_usuario || user.id
           })
         }
       } catch (error) {
@@ -34,27 +34,20 @@ function PrioridadForm() {
         setError("Error al cargar los datos. Intente nuevamente.")
       }
     }
-
     fetchData()
-  }, [id, isEditing])
+  }, [id, isEditing, user.id])
 
   const handleSubmit = async (data) => {
     setLoading(true)
     setError("")
-
     try {
-      const prioridadData = { ...data }
-      if (isEditing && !prioridadData.password) {
-        delete prioridadData.password
-      }
-
+      const prioridadData = { ...data, id_usuario: user.id }
       if (isEditing) {
         await prioridadesService.update(id, prioridadData)
       } else {
         await prioridadesService.create(prioridadData)
       }
-
-      return true // Éxito
+      return true
     } catch (error) {
       console.error("Error al guardar prioridad:", error)
       setError("Error al guardar el prioridad. Intente nuevamente.")
@@ -66,12 +59,17 @@ function PrioridadForm() {
 
   const fields = [
     {
-      name: "descripcion",
+      name: "nombre",
       label: "Nombre",
       type: "text",
       required: true,
-      placeholder: "Ingrese el nombre del prioridad",
-    }
+      placeholder: "Ingrese el nombre de la prioridad",
+    },
+    {
+      name: "id_usuario",
+      label: "",
+      type: "hidden"
+    },
   ]
 
   return (
@@ -89,4 +87,3 @@ function PrioridadForm() {
 }
 
 export default PrioridadForm
-

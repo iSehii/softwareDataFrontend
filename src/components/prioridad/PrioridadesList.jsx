@@ -44,7 +44,8 @@ useEffect(() => {
 
   const columns = [
     { key: "id", header: "ID" },
-    { key: "descripcion", header: "Nombre" },
+    { key: "nombre", header: "Nombre" },
+    { key: "id_usuario", header: "Creado por" },
   ]
   
 

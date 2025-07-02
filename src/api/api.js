@@ -1,20 +1,22 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const instance = axios.create({
-  baseURL: 'http://localhost:3009/',
+  baseURL: `${API_URL}`,
 });
 
 instance.interceptors.request.use(
-    (config) => {
-      const token = Cookies.get("token"); 
-      if (token) {
-        config.headers.authorization = `${token}`;
-      }
-      return config;
-    },
-    (error) => Promise.reject(error)
-  );
+  (config) => {
+    const token = Cookies.get("token"); 
+    if (token) {
+      config.headers.authorization = `${token}`;
+    }
+    return config;
+  },
+  (error) => Promise.reject(error)
+);
 
   instance.interceptors.response.use(
     (response) => response, 
@@ -45,6 +47,13 @@ instance.interceptors.request.use(
     delete: (id) => instance.delete(`/roles/${id}`),
   }
   
+  
+  export const imagesService = {
+    getAll: () => instance.get("/imagenes"),
+    getById: (id) => instance.get(`/imagenes/${id}`),
+  }
+  
+
   export const reportesService = {
     getAll: () => instance.get("/reportes"),
     getById: (id) => instance.get(`/reportes/${id}`),
@@ -67,6 +76,7 @@ instance.interceptors.request.use(
   
   export const carroceriasService = {
     getAll: () => instance.get("/carrocerias"),
+    getFolio: () => instance.get("/carrocerias/folio"),
     getById: (id) => instance.get(`/carrocerias/${id}`),
     create: (data) => instance.post("/carrocerias", data),
     update: (id, data) => instance.put(`/carrocerias/${id}`, data),

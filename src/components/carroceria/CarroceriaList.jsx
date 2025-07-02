@@ -51,6 +51,7 @@ useEffect(() => {
   const columns = [
     { key: "id", header: "ID" },
     { key: "no_parte", header: "No. Parte" },
+    { key: "folio", header: "Folio" },
     { key: "panel", header: "Panel" },
     { 
       key: "id_usuario",

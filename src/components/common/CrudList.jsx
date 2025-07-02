@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
-import { Plus, Edit, Trash2, Search } from "lucide-react"
+import { Plus, Edit, Trash2, Search, Eye } from "lucide-react"
 import Layout from "../layout/layout";
 
 function CrudList({ title, items, columns, loading, error, basePath, onDelete, searchFields = [] }) {
@@ -36,9 +36,9 @@ function CrudList({ title, items, columns, loading, error, basePath, onDelete, s
 
   return (
     <Layout>
-      <div>
-        <div className="flex justify-between items-center mb-6">
-          <h1 className="text-2xl font-bold text-gray-50">{title}</h1>
+      <div className="">
+        <div className="flex justify-between items-center mb-6 sticky py-4 top-[0] px-6 bg-gray-800 z-[50] border-b-2 border-b-emerald-800 h-20">
+          <h1 className="text-2xl font-bold text-gray-50 py-2">{title}</h1>
           <Link
             to={`/${basePath}/nuevo`}
             className="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-md flex items-center"
@@ -54,7 +54,7 @@ function CrudList({ title, items, columns, loading, error, basePath, onDelete, s
           </div>
         )}
 
-        <div className="bg-black rounded-lg border border-gray-200 shadow-sm overflow-hidden">
+        <div className="bg-black rounded-lg border border-gray-200 shadow-sm overflow-hidden mx-6 mb-6">
           {searchFields.length > 0 && (
             <div className="p-4 border-b">
               <div className="relative bg-gray-700 w-full sm:w-64">
@@ -103,6 +103,9 @@ function CrudList({ title, items, columns, loading, error, basePath, onDelete, s
                       ))}
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                         <div className="flex space-x-2">
+                          <Link to={`/${basePath}/ver/${item.id}`} className="text-white hover:text-wgray">
+                            <Eye className="h-5 w-5" />
+                          </Link>
                           <Link to={`/${basePath}/editar/${item.id}`} className="text-indigo-600 hover:text-indigo-900">
                             <Edit className="h-5 w-5" />
                           </Link>

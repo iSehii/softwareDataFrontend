@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { useParams, useNavigate } from "react-router-dom"
-import { reportesService } from "../../api/api"
+import { reportesService, prioridadesService, imperfeccionesService, carroceriasService } from "../../api/api"
 import CrudForm from "../common/CrudForm"
 
 function ReporteForm() {
@@ -8,25 +8,37 @@ function ReporteForm() {
   const navigate = useNavigate()
   const isEditing = !!id
 
-  const [formData, setFormData] = useState({
-    nombre: "",
-  })
-
-  const [reportes, setReportees] = useState([])
+  const [formData, setFormData] = useState({ nombre: "" })
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
+
+  // Estados para las opciones de los selects
+  const [prioridades, setPrioridades] = useState([])
+  const [imperfecciones, setImperfecciones] = useState([])
+  const [carrocerias, setCarrocerias] = useState([])
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const reportesRes = await reportesService.getAll()
-        setReportees(reportesRes.data)
+        // Carga las opciones de los selects
+        const [prioridadesRes, imperfeccionesRes, carroceriasRes] = await Promise.all([
+          prioridadesService.getAll(),
+          imperfeccionesService.getAll(),
+          carroceriasService.getAll(),
+        ])
+        setPrioridades(prioridadesRes.data)
+        setImperfecciones(imperfeccionesRes.data)
+        setCarrocerias(carroceriasRes.data)
 
         if (isEditing) {
           const reporteRes = await reportesService.getById(id)
           const reporte = reporteRes.data
           setFormData({
-            descripcion: reporte.descripcion || ""
+            id_prioridad: reporte.id_prioridad || "",
+            descripcion: reporte.descripcion || "",
+            id_imperfecciones: reporte.id_imperfecciones || "",
+            id_carrocerias: reporte.id_carrocerias || "",
+            // id_usuario lo manejas tú
           })
         }
       } catch (error) {
@@ -34,24 +46,20 @@ function ReporteForm() {
         setError("Error al cargar los datos. Intente nuevamente.")
       }
     }
-
     fetchData()
   }, [id, isEditing])
 
   const handleSubmit = async (data) => {
     setLoading(true)
     setError("")
-
     try {
       const reporteData = { ...data }
-
       if (isEditing) {
         await reportesService.update(id, reporteData)
       } else {
         await reportesService.create(reporteData)
       }
-
-      return true // Éxito
+      return true
     } catch (error) {
       console.error("Error al guardar la reporte:", error)
       setError("Error al guardar la reporte. Intente nuevamente.")
@@ -61,13 +69,43 @@ function ReporteForm() {
     }
   }
 
+  // Mapea las opciones para los selects
   const fields = [
     {
+      name: "id_prioridad",
+      label: "Prioridad",
+      type: "select",
+      required: true,
+      options: prioridades.map(p => ({ value: p.id, label: p.nombre })),
+      placeholder: "Selecciona la prioridad"
+    },
+    {
       name: "descripcion",
-      label: "descripcion",
+      label: "Descripción",
       type: "text",
       required: true,
-      placeholder: "Ingrese la descripción de la reporte",
+      placeholder: "Ingrese la descripción del reporte"
+    },
+    {
+      name: "id_imperfecciones",
+      label: "Imperfección",
+      type: "select",
+      required: false,
+      options: imperfecciones.map(i => ({ value: i.id, label: i.nombre })),
+      placeholder: "Selecciona la imperfección"
+    },
+    {
+      name: "id_carrocerias",
+      label: "Carrocería",
+      type: "select",
+      required: true,
+      options: carrocerias.map(c => ({ value: c.id, label: c.lote })),
+      placeholder: "Selecciona la carrocería"
+    },
+    {
+      name: "id_usuario",
+      label: "",
+      type: "hidden"
     }
   ]
 
@@ -86,4 +124,3 @@ function ReporteForm() {
 }
 
 export default ReporteForm
-
